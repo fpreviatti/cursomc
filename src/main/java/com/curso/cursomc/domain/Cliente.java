@@ -34,6 +34,7 @@ public class Cliente implements Serializable {
 	private Integer tipo;
 	private double altura;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
