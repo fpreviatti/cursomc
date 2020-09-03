@@ -32,7 +32,13 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
+	private double altura;
 	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
+	
+	
+
 	@JsonManagedReference
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
@@ -57,6 +63,17 @@ public class Cliente implements Serializable {
 		this.tipo = tipo.getCod();
 	}
 
+	
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
 
 	public Integer getId() {
 		return id;
@@ -126,6 +143,18 @@ public class Cliente implements Serializable {
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+	
+	
+
+
+	public double getAltura() {
+		return altura;
+	}
+
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
 
 
 	@Override
@@ -153,6 +182,8 @@ public class Cliente implements Serializable {
 			return false;
 		return true;
 	}
-	
+
+
+
 	
 }
